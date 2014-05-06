@@ -2,13 +2,14 @@
     "name": "newbie-guide",
     "comName":"NewbieGuide",
     "version": "1.0",
-    "desc": "",
+    "desc": "幻灯片式全屏新手引导组件",
+    "cover":"http://gtms04.alicdn.com/tps/i4/T1MrPbFQdbXXbuvm_S-300-120.png",
     "tag":"新手引导",
     "githubName":"gafish",
     "author": {
         "name": "圆影",
-        "email": "yuanying.xh@alibaba-inc.com",
-        "page": ""
+        "email": "49321443@qq.com",
+        "page": "https://github.com/gafish/newbie-guide"
     },
 	"flexComboPort":"8081",
 	"reserveServerPort":"8080",
