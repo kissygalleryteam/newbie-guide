@@ -16,17 +16,19 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
 
     var Config = {
         closable:true,
-        cls: 'newbie',
+        cls: 'ks-newbie',
         type: 'image', // image||html
+        width: 300,
+        height: 300,
         contents: []
     }
 
-    var TPL = '<div class="newbie-wrap">'+
+    var TPL = '<div class="ks-newbie-wrap">'+
             '<ul class="tab-nav">'+
             '</ul>'+
             '<div class="tab-content">'+
                 '{{#each contents}}'+
-                '<div class="tab-pannel newbie-pannel{{xindex}}">'+
+                '<div class="tab-pannel ks-newbie-pannel{{xindex}}">'+
                 '{{#if type==="html"}}'+
                 '{{this}}'+
                 '{{else}}'+
@@ -35,8 +37,8 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
                 '</div>'+
                 '{{/each}}'+
             '</div>'+
-            '<a class="newbie-pre">前</a>'+
-            '<a class="newbie-next">后</a>'+
+            '<a class="ks-newbie-pre">前</a>'+
+            '<a class="ks-newbie-next">后</a>'+
         '</div>';
 
     function NewbieGuide(){
@@ -55,6 +57,7 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
             var self = this;
             var overlay = new Overlay({
                 mask: true,
+                zIndex: 99999,
                 closeAction: 'destroy',
                 closable: self.cfg.closable,
                 effect: {
@@ -67,6 +70,15 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
                 elCls: self.cfg.cls
             });
             overlay.render();
+            var el = $(overlay.el);
+            overlay.on('show',function(){
+                var nextTop = el.all('.tab-nav').offset().top-el.offset().top+el.all('.tab-nav').height()+5;
+                el.all('.ks-newbie-next').css('top',nextTop).fadeIn(0.05);
+            })
+            el.all('.tab-content,.tab-pannel').css({
+                width: self.cfg.width,
+                height: self.cfg.height
+            });
             return overlay;
         },
         _renderSlideHTML: function(){
@@ -75,7 +87,7 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
         _bindSlide: function(){
             var self = this;
             var el = $(this.overlay.el);
-            var slide = new Slide(el.one('.newbie-wrap'),{
+            var slide = new Slide(el.one('.ks-newbie-wrap'),{
                 effect: self.cfg.effect,
                 colspan: 1,
                 carousel: false
@@ -86,10 +98,10 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
             var self = this;
             $(this.el).on('click',function(e){
                 var target = $(e.target);
-                if (target.hasClass('newbie-pre')) {
+                if (target.hasClass('ks-newbie-pre')) {
                     self.slide.previous();
                 };
-                if (target.hasClass('newbie-next')) {
+                if (target.hasClass('ks-newbie-next')) {
                     self.slide.next();
                 };
                 e.halt();
