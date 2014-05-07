@@ -13,6 +13,8 @@ config = {
     closeable:true,
     type: 'image', // image | html
     effect: 'vSlide', // vSlide | hSlide
+    width: 300,
+    height: 300,
     contents: ['']
 }
 
@@ -26,6 +28,7 @@ KISSY.add('gallery/newbie-guide/1.0/index',function(S, N, Overlay, Xtemplate, Sl
         type: 'image', // image||html
         width: 300,
         height: 300,
+        points: ['cc', 'cc'],
         contents: []
     }
 
@@ -70,7 +73,7 @@ KISSY.add('gallery/newbie-guide/1.0/index',function(S, N, Overlay, Xtemplate, Sl
                     effect: 'fade'
                 },
                 align: {
-                    points: ['cc', 'cc']
+                    points: self.cfg.points
                 },
                 content: self._renderSlideHTML(),
                 elCls: self.cfg.cls

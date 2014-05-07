@@ -60,11 +60,12 @@
     S.use('gallery/newbie-guide/1.0/,gallery/newbie-guide/1.0/index.css', function (S, NewbieGuide) {
         var newbie = new NewbieGuide({
             closable:true,
-            cls: 'ks-newbie',
+            cls: 'ks-newbie newbie-guide',
             type: 'image', // image | html
             effect: 'vSlide', // vSlide | hSlide
             width: 580,
             height: 510,
+            points: ['bc','bc'],
             contents: [
                 'http://gtms02.alicdn.com/tps/i2/T1g5bbFSXbXXbv4wHF-580-510.png',
                 'http://gtms03.alicdn.com/tps/i3/T11mniFFdXXXbv4wHF-580-510.png',

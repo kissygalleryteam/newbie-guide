@@ -7,6 +7,8 @@ config = {
     closeable:true,
     type: 'image', // image | html
     effect: 'vSlide', // vSlide | hSlide
+    width: 300,
+    height: 300,
     contents: ['']
 }
 
@@ -20,6 +22,7 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
         type: 'image', // image||html
         width: 300,
         height: 300,
+        points: ['cc', 'cc'],
         contents: []
     }
 
@@ -64,7 +67,7 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
                     effect: 'fade'
                 },
                 align: {
-                    points: ['cc', 'cc']
+                    points: self.cfg.points
                 },
                 content: self._renderSlideHTML(),
                 elCls: self.cfg.cls
