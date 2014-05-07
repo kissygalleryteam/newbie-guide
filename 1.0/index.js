@@ -48,7 +48,7 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
         this._init.apply(this,arguments);
     }
 
-    S.augment(NewbieGuide,{
+    S.augment(NewbieGuide,S.EventTarget,{
         _init: function(cfg){
             this.cfg = S.merge(Config,cfg);
             this.overlay = this._createOverlay();
@@ -61,7 +61,6 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
             var overlay = new Overlay({
                 mask: true,
                 zIndex: 99999,
-                closeAction: 'destroy',
                 closable: self.cfg.closable,
                 effect: {
                     effect: 'fade'
@@ -77,6 +76,9 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
             overlay.on('show',function(){
                 var nextTop = el.all('.tab-nav').offset().top-el.offset().top+el.all('.tab-nav').height()+5;
                 el.all('.ks-newbie-next').css('top',nextTop).fadeIn(0.05);
+            })
+            overlay.on('hide',function(){
+                self.close();
             })
             el.all('.tab-content,.tab-pannel').css({
                 width: self.cfg.width,
@@ -112,6 +114,7 @@ KISSY.add(function(S, N, Overlay, Xtemplate, Slide) {
         },
         close: function(){
             this.overlay.destroy();
+            this.fire('close');
         },
         show: function(){
             this.overlay.show();

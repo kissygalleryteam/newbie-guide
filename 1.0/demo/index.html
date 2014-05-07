@@ -73,6 +73,9 @@
             ] 
         });
         newbie.show();
+        newbie.on('close',function(){
+            alert('关闭提示弹层')
+        })
         newbie.el.all('.ks-newbie-pannel2 img').on('click',function(){
             newbie.close();
         })
