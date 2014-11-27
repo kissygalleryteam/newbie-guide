@@ -1,9 +1,11 @@
 /*
-combined files : 
+Thu Nov 27 2014 15:05:21 GMT+0800 (CST)
+combined files by KMD:
 
-kg/newbie-guide/2.0.0/index
-
+index.js
 */
+
+KISSY.add('kg/newbie-guide/2.0.2/index',["node","overlay","xtemplate","kg/slide/2.0.2/"],function(S ,require, exports, module) {
 /**
  * @fileoverview 
  * @author 圆影<yuanying.xh@alibaba-inc.com>
@@ -19,17 +21,19 @@ config = {
 }
 
  **/
-KISSY.add('kg/newbie-guide/2.0.0/index',function(S, N, Overlay, Xtemplate, Slide) {
-    var $ = N.all;
-
-    var Config = {
-        closable:true,
-        cls: 'ks-newbie',
-        type: 'image', // image||html
-        width: 300,
-        height: 300,
-        points: ['cc', 'cc'],
-        contents: []
+    var Node      = require('node');
+    var Overlay   = require('overlay');
+    var Xtemplate = require('xtemplate');
+    var Slide     = require('kg/slide/2.0.2/');
+    var $         = Node.all;
+    var Config    = {
+        closable :true,
+        cls      : 'ks-newbie',
+        type     : 'image', // image||html
+        width    : 300,
+        height   : 300,
+        points   : ['cc', 'cc'],
+        contents : []
     }
 
     var TPL = '<div class="ks-newbie-wrap">'+
@@ -56,27 +60,23 @@ KISSY.add('kg/newbie-guide/2.0.0/index',function(S, N, Overlay, Xtemplate, Slide
 
     S.augment(NewbieGuide,{
         _init: function(cfg){
-            this.cfg = S.merge(Config,cfg);
+            this.cfg     = S.merge(Config,cfg);
             this.overlay = this._createOverlay();
-            this.el = $(this.overlay.el);
-            this.slide = this._bindSlide();
+            this.el      = $(this.overlay.el);
+            this.slide   = this._bindSlide();
             this._bind();
         },
         _createOverlay: function(){
             var self = this;
             var overlay = new Overlay({
-                mask: true,
-                zIndex: 99999,
-                closeAction: 'destroy',
-                closable: self.cfg.closable,
-                effect: {
-                    effect: 'fade'
-                },
-                align: {
-                    points: self.cfg.points
-                },
-                content: self._renderSlideHTML(),
-                elCls: self.cfg.cls
+                mask        : true,
+                zIndex      : 99999,
+                closeAction : 'destroy',
+                closable    : self.cfg.closable,
+                effect      : {effect: 'fade'},
+                align       : {points: self.cfg.points },
+                content     : self._renderSlideHTML(),
+                elCls       : self.cfg.cls
             });
             overlay.render();
             var el = $(overlay.el);
@@ -94,8 +94,8 @@ KISSY.add('kg/newbie-guide/2.0.0/index',function(S, N, Overlay, Xtemplate, Slide
             return new Xtemplate(TPL).render(this.cfg);
         },
         _bindSlide: function(){
-            var self = this;
-            var el = $(this.overlay.el);
+            var self  = this;
+            var el    = $(this.overlay.el);
             var slide = new Slide(el.one('.ks-newbie-wrap'),{
                 effect: self.cfg.effect,
                 colspan: 1,
@@ -124,13 +124,6 @@ KISSY.add('kg/newbie-guide/2.0.0/index',function(S, N, Overlay, Xtemplate, Slide
         }
     });
 
-    return NewbieGuide;
+    module.exports = NewbieGuide;
 
-}, {
-    requires: [
-        'node',
-        'overlay',
-        'xtemplate',
-        'kg/slide/1.3/'
-    ]
-})
+});

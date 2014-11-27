@@ -1,0 +1,1 @@
+KISSY.config("modules",{"kg/newbie-guide/2.0.2/index":{requires:["node","overlay","xtemplate","kg/slide/2.0.2/"]}});

@@ -34,30 +34,35 @@
             display: block;
         }
         body{
-            background: url('http://img.dofay.com/2014/04/202.0.0403qc16.jpeg');
+            background: url('http://i.mmcdn.cn/simba/img/TB1KCiBGFXXXXbaaXXXSutbFXXX.jpg');
         }
     </style>    
-<script>var S = KISSY;S.config({packages:[{name:"kg",path:"http://g.tbcdn.cn/kg/",charset:"utf-8",ignorePackageNameInUri:true}]});if (S.Config.debug){var srcPath = "../";S.config({packages:[{name:"kg/newbie-guide/2.0.0",path:srcPath,charset:"utf-8",ignorePackageNameInUri:true}]});}</script></head>
 <body>
 <h2>NewbieGuide的demo</h2>
 
 <script>
     var S = KISSY;
+    S.config({
+        packages: [{
+            name: "kg",
+            path: "http://g.tbcdn.cn/kg/",
+            charset: "utf-8",
+            ignorePackageNameInUri: true
+        }]
+    });
     if (S.Config.debug) {
-        var srcPath = "../../";
+        var srcPath = "../build/";
         S.config({
-            packages:[
-                {
-                    name:"kg/newbie-guide",
-                    path:srcPath,
-                    charset:"utf-8",
-                    ignorePackageNameInUri:true
-                }
-            ]
+            packages: [{
+                name: "kg/newbie-guide/2.0.2",
+                path: srcPath,
+                charset: "utf-8",
+                ignorePackageNameInUri: true
+            }]
         });
     }
 
-    S.use('kg/newbie-guide/2.0.0/,kg/newbie-guide/2.0.0/index.css', function (S, NewbieGuide) {
+    S.use('kg/newbie-guide/2.0.2/index,kg/newbie-guide/2.0.2/index.css', function (S, NewbieGuide) {
         var newbie = new NewbieGuide({
             closable:true,
             cls: 'ks-newbie newbie-guide',
