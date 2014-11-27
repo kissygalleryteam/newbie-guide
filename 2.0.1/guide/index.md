@@ -19,7 +19,7 @@ NewbieGuide是一个新功能引导组件，主要是集成slide组件，只要�
             contents: [
                 'http://gtms03.alicdn.com/tps/i3/T1O4h_FG4cXXazuKP7-520-280.jpg',
                 'http://i.mmcdn.cn/simba/img/T15_F7FGpdXXb1upjX.jpg',
-                'http://i.mmcdn.cn/simba/img/T15_F7FGpdXXb1upjX.jpg'
+                'http://i.mmcdn.cn/simba/img/T1U0JuFHBbXXb1upjX.jpg'
             ] 
         });
         newbie.show();
