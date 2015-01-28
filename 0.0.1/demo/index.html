@@ -4,10 +4,26 @@
     <meta charset="utf-8"/>
     <title>Guide的demo</title>
     <script src="http://g.tbcdn.cn/kissy/k/1.4.8/seed-min.js" charset="utf-8"></script>
+    <style>
+        body {
+            margin:0;
+            padding: 0;
+        }
+        .page {
+            width:1368px;
+            margin:0 auto;
+        }
+        .fack-img {
+            width: 1368px;
+            margin:0 auto;
+        }
+    </style>
 </head>
 <body>
 <h2>Guide的demo</h2>
-
+<div class="page">
+    <img src="http://gtms03.alicdn.com/tps/i3/TB14SPmHXXXXXXOaXXX_XdhQVXX-1368-724.png" alt=""/>
+</div>
 <script>
     var S = KISSY;
     if (S.Config.debug) {
@@ -24,9 +40,36 @@
     }
 
     S.use('kg/guide/1.0.0/index', function (S, Guide) {
-        var aNewGuide = new Guide();
+        var newGuide = new Guide();
 
-        aNewGuide.use('plugin')
+        // 使用插件
+        var Shim = newGuide.use('shim');
+        var Tip = newGuide.use('tip');
+        var Button = newGuide.use('button');
+
+        // 设置第一步
+        newGuide.step({
+            contents:[
+                new Tip()
+            ],
+            trigger:new Tip()
+        });
+
+        // 设置第二步
+        newGuide.step(function() {
+            // 第三天
+        });
+
+        /**
+         * 设想几种场景，还有其中的概念
+         *
+         * 引导应该是有一步步， 更像是放ppt
+         * 每一步的触发条件应该由用户来指定（自动播放、点击进入下一步、甚至是需要用户进行操作）
+         * 有各种插件方便用户在各个步骤中创建需要的控件，例如，tip，按钮。或者用户可以在各个场景中添加事件。用户也可以快速的编写自己需要的插件来进行引导的制作
+         * 一个场景的创建意味着上一个场景的销毁。
+         * 每一个场景中要定义出现那些控件，可能控件也有先后顺序
+         */
+
     })
 </script>
 </body>
