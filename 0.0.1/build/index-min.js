@@ -1,0 +1,1 @@
+KISSY.add("kg/guide/1.0.0/index",["base","node"],function(e,t,n,r){var a,i=t("base"),u=t("node");a=function(e){var t=u.all,n=i,r=n.extend({initializer:function(){{var e=this;e.get("$target")}}},{ATTRS:{$target:{value:"",getter:function(e){return t(e)}}}});return e=r}(),r.exports=a});

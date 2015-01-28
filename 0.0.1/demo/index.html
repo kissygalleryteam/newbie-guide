@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Guide的demo</title>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.8/seed-min.js" charset="utf-8"></script>
+</head>
+<body>
+<h2>Guide的demo</h2>
+
+<script>
+    var S = KISSY;
+    if (S.Config.debug) {
+        var debugPath = "http://localhost:8787/";
+        S.config({
+            packages:[
+                {
+                    name:"kg/guide/1.0.0",
+                    path:debugPath,
+                    charset:"utf-8"
+                }
+            ]
+        });
+    }
+
+    S.use('kg/guide/1.0.0/index', function (S, Guide) {
+        var aNewGuide = new Guide();
+
+        aNewGuide.use('plugin')
+    })
+</script>
+</body>
+</html>
+
